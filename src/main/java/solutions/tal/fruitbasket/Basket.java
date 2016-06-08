@@ -62,12 +62,7 @@ public class Basket {
     }
 
     public Double getTotalPrice() {
-        return fruits.entrySet().stream().collect(Collectors.summingDouble(new ToDoubleFunction<Map.Entry<Fruit,Integer>>() {
-            @Override
-            public double applyAsDouble(Map.Entry<Fruit, Integer> value) {
-                return value.getKey().getPrice() * value.getValue();
-            }
-        }));
+        return fruits.entrySet().stream().collect(Collectors.summingDouble(e -> e.getKey().getPrice() * e.getValue()));
     }
 
     public String getFormattedTotalPrice() {
